@@ -1,4 +1,4 @@
-/*     TASK_2 Babikov Aleksandr st135743@student.spbu.ru     */
+/*     Assignment2a Babikov Aleksandr st135743@student.spbu.ru     */
 
 
 #include <iostream>

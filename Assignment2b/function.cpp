@@ -1,12 +1,13 @@
 /*     Assignment2b Babikov Aleksandr st135743@student.spbu.ru     */
 
 
+
 #include "myheader.h"
 #include <stdexcept>
 #include <sstream>
 #include <cctype>
 
-Stack::Stack(int size) : capacity(size), topIndex(-1) {
+Stack::Stack(int size) : topIndex(-1), capacity(size) {
     stackArray = new double[capacity];
 }
 
@@ -68,3 +69,4 @@ double evaluateRPN(const std::string& expression) {
     if (stack.isEmpty()) throw std::runtime_error("Выражение не содержит результатов");
     return stack.pop();
 }
+

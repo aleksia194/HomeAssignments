@@ -40,5 +40,31 @@ bool Stack::isEmpty() const {
 }
 
 double evaluateRPN(const std::string& expression) {
-    
+    std::istringstream iss(expression);
+    std::string token;
+    Stack stack(100);
+
+    while (iss >> token) {
+        if (std::isdigit(token[0]) || (token[0] == '-' && token.size() > 1)) {
+            stack.push(std::stod(token));
+        } else if (token == "+" || token == "-" || token == "*" || token == "/") {
+            if (stack.isEmpty()) throw std::runtime_error("Недостаточно операндов");
+            double right = stack.pop();
+            if (stack.isEmpty()) throw std::runtime_error("Недостаточно операндов");
+            double left = stack.pop();
+
+            if (token == "+") stack.push(left + right);
+            else if (token == "-") stack.push(left - right);
+            else if (token == "*") stack.push(left * right);
+            else if (token == "/") {
+                if (right == 0) throw std::runtime_error("Деление на ноль");
+                stack.push(left / right);
+            }
+        } else {
+            throw std::runtime_error("Недопустимый символ: " + token);
+        }
+    }
+
+    if (stack.isEmpty()) throw std::runtime_error("Выражение не содержит результатов");
+    return stack.pop();
 }

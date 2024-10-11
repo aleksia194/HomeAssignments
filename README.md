@@ -1,6 +1,6 @@
 # Assignment 2
 ## Author
-<h1>Бабиков Александр Дмитриевич <b>24.Б82-мм</b></h1>
+Бабиков Александр Дмитриевич <b>24.Б82-мм</b>
 ## Contacts
 st135743@student.spbu.ru
 ## Description

@@ -6,14 +6,14 @@
 
 int main() {
   std::string expression;
-    std::cout << "Введите выражение в обратной польской записи: ";
+    std::cout << "Enter the expression in reverse Polish notation: ";
     std::getline(std::cin, expression);
 
     try {
         double result = evaluateRPN(expression);
-        std::cout << "Результат: " << result << std::endl;
+        std::cout << "Result: " << result << std::endl;
     } catch (const std::exception& e) {
-        std::cerr << "Ошибка: " << e.what() << std::endl;
+        std::cerr << "Eror: " << e.what() << std::endl;
     }
 
     return 0;

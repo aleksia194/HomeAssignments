@@ -1,12 +1,11 @@
-Assignment2b_ = Babikov Aleksandr st135743@student.spbu.ru
+Assignment3 = Babikov Aleksandr st135743@student.spbu.ru
 
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
-TARGET = Assignment2b
+TARGET = Assignment3
 
-SRCS = main.cpp function.cpp
-HEADERS = myheader.h
+
 
 all: $(TARGET)
 

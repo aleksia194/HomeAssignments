@@ -1,17 +1,20 @@
-Assignment3 = Babikov Aleksandr st135743@student.spbu.ru
-
+asignment3 = Babikov Aleksandr st135743@student.spbu.ru
 
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+CXXFLAGS = -std=c++17 -Wall -Iinclude 
+
+SRC = classes/Transformer.cpp classes/Engine.cpp main.cpp
+OBJ = $(SRC:.cpp=.o)
 TARGET = Assignment3
-
-
 
 all: $(TARGET)
 
-$(TARGET): $(SRCS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS)
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $(TARGET)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(OBJ) $(TARGET)
 

@@ -1,10 +1,11 @@
 asignment3 = Babikov Aleksandr st135743@student.spbu.ru
 
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iinclude 
+CXXFLAGS = -std=c++17 -Wall -Iheaders
 
-SRC = classes/Transformer.cpp classes/Engine.cpp main.cpp
+SRC = classes/Transformer.cpp classes/Engine.cpp classes/Weapon.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
+
 TARGET = Assignment3
 
 all: $(TARGET)

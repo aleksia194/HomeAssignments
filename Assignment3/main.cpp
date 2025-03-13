@@ -1,19 +1,22 @@
 /*     Assignment3 Babikov Aleksandr st135743@student.spbu.ru     */
 
 
+#include <iostream>
 #include "Transformer.h"
-#include "Weapon.h"
 
 int main() {
-    Transformer optimus;
-    Weapon blaster("Blaster", 50);
-    Weapon sword("Energy Sword", 80);
+    Transformer optimus("Optimus Prime", 90, 80, 100, 70);
 
-    optimus.equipWeapon(&blaster);
-    optimus.attack();
+    std::cout << "Name: " << optimus.getName() << "\n";
+    std::cout << "Strength: " << optimus.getStrength() << "\n";
+    std::cout << "Speed: " << optimus.getSpeed() << "\n";
+    std::cout << "Fuel: " << optimus.getFuel() << "\n";
+    std::cout << "Armor: " << optimus.getArmor() << "\n";
 
-    optimus.equipWeapon(&sword);
+    optimus.transform();
     optimus.attack();
+    optimus.refuel(50);
 
     return 0;
 }
+

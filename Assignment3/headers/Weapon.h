@@ -22,8 +22,8 @@ public:
     void attack() const;
 
 private:
-    std::string _name;  // Название оружия
-    uint32_t _damage;   // Урон
+    std::string _name;  
+    uint32_t _damage;   
 };
 
 #endif // WEAPON_H

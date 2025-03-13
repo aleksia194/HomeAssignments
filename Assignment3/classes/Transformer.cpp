@@ -2,55 +2,57 @@
 
 
 #include "Transformer.h"
+#include <iostream>
 
-Transformer::Transformer() 
-    : _level(1), _strength(100), _range(50), _fuel(100), _ammo(10), 
-      _shape_robot(true), _engine(500, 80), _weapon(nullptr) {
-    std::cout << "Transformer created" << std::endl;
-}
+Transformer::Transformer(const std::string& name, uint32_t strength, uint32_t speed, uint32_t fuel, uint32_t armor)
+    : _name(name), _strength(strength), _speed(speed), _fuel(fuel), _armor(armor), _engine(100, 75), _weapon(nullptr) {}
+
 
 Transformer::~Transformer() {
-    std::cout << "Transformer destroyed" << std::endl;
+    std::cout << "Transformer " << _name << " destroyed\n";
 }
 
-bool Transformer::move() {
-    return true;
+std::string Transformer::getName() const { return _name; }
+uint32_t Transformer::getStrength() const { return _strength; }
+uint32_t Transformer::getSpeed() const { return _speed; }
+uint32_t Transformer::getFuel() const { return _fuel; }
+uint32_t Transformer::getArmor() const { return _armor; }
+
+void Transformer::setName(const std::string& name) { _name = name; }
+void Transformer::setStrength(uint32_t strength) { _strength = strength; }
+void Transformer::setSpeed(uint32_t speed) { _speed = speed; }
+void Transformer::setFuel(uint32_t fuel) { _fuel = fuel; }
+void Transformer::setArmor(uint32_t armor) { _armor = armor; }
+
+void Transformer::transform() {
+    std::cout << _name << " is transforming...\n";
 }
 
-bool Transformer::turn(int dir) {
-    return true;
+bool Transformer::attack() {
+    if (_weapon) {
+        std::cout << _name << " attacks with " << _weapon->getName() << " for " << _weapon->getDamage() << " damage!\n";
+        return 1;
+    } else {
+        std::cout << _name << " has no weapon to attack with!\n";
+        return 0;
+    }
 }
 
-bool Transformer::jump() {
-    return true;
-}
-
-bool Transformer::fire() {
-    return true;
-}
-
-bool Transformer::ultimate() {
-    return true;
-}
-
-bool Transformer::transform() {
-    return true;
-}
-
-bool Transformer::refueling(uint32_t fuel) {
-    _fuel += fuel;
-    return true;
+void Transformer::refuel(uint32_t amount) {
+    _fuel += amount;
+    std::cout << _name << " refueled by " << amount << ". New fuel: " << _fuel << "\n";
 }
 
 void Transformer::equipWeapon(Weapon* weapon) {
     _weapon = weapon;
-    std::cout << "Transformer equipped with " << weapon->getName() << std::endl;
+    std::cout << _name << " equipped with " << weapon->getName() << "\n";
 }
 
-void Transformer::attack() {
+void Transformer::unequipWeapon() {
     if (_weapon) {
-        _weapon->attack();
+        std::cout << _name << " unequipped " << _weapon->getName() << "\n";
+        _weapon = nullptr;
     } else {
-        std::cout << "Transformer has no weapon!" << std::endl;
+        std::cout << _name << " has no weapon to unequip!\n";
     }
 }

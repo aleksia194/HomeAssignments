@@ -10,29 +10,37 @@
 
 class Transformer {
 public:
-    Transformer();
+    Transformer(const std::string& name, uint32_t strength = 300, uint32_t speed = 60, uint32_t fuel = 100, uint32_t armor = 200);
     ~Transformer();
 
-    bool move();
-    bool turn(int dir);
-    bool jump();
-    bool fire();
-    bool ultimate();
-    bool transform();
-    bool refueling(uint32_t fuel);
+    std::string getName() const;
+    uint32_t getStrength() const;
+    uint32_t getSpeed() const;
+    uint32_t getFuel() const;
+    uint32_t getArmor() const;
+
+    void setName(const std::string& name);
+    void setStrength(uint32_t strength);
+    void setSpeed(uint32_t speed);
+    void setFuel(uint32_t fuel);
+    void setArmor(uint32_t armor);
+
+    void transform();  
+    bool attack();     
+    void refuel(uint32_t amount); 
     void equipWeapon(Weapon* weapon);
-    void attack();
+    void unequipWeapon(); 
 
 private:
-    uint32_t _level;
+    std::string _name;
     uint32_t _strength;
-    uint32_t _range;
+    uint32_t _speed;
     uint32_t _fuel;
-    uint32_t _ammo;
-    bool _shape_robot;
-    
-    Engine _engine;    
-    Weapon* _weapon;   
+    uint32_t _armor;
+
+    Engine _engine;  
+    Weapon* _weapon;
 };
 
-#endif // TRANSFORMER_H
+#endif  // TRANSFORMER_H
+
